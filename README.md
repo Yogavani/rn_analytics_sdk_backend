@@ -19,7 +19,7 @@ A lightweight, customizable analytics SDK for React Native apps.
 
 ```bash
 npm install rn-analytics-sdk
-npm install @react-native-async-storage/async-storage react-native-get-random-values
+npm install @react-native-async-storage/async-storage
 ```
 
 ---
@@ -29,10 +29,8 @@ npm install @react-native-async-storage/async-storage react-native-get-random-va
 `rn-analytics-sdk` expects the host app to install:
 
 * `@react-native-async-storage/async-storage`
-* `react-native-get-random-values`
 
-These are peer dependencies to prevent duplicate native modules and autolinking conflicts.
-The SDK imports `react-native-get-random-values` internally to support `uuid` on React Native.
+This is a peer dependency to prevent duplicate native modules and autolinking conflicts.
 
 ---
 

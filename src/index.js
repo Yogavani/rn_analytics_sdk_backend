@@ -1,4 +1,3 @@
-import "react-native-get-random-values";
 import Tracker from "./tracker";
 
 class Analytics {

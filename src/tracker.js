@@ -1,10 +1,15 @@
-const { v4: uuidv4 } = require("uuid");
 import Queue from "./queue";
 import Sender from "./sender";
 
+function createId() {
+  const timePart = Date.now().toString(36);
+  const randomPart = Math.random().toString(36).slice(2, 12);
+  return `${timePart}-${randomPart}`;
+}
+
 class Tracker {
   constructor(config = {}) {
-    this.sessionId = uuidv4();
+    this.sessionId = createId();
     this.queue = new Queue();
 
     this.apiUrl = config.apiUrl;
@@ -25,7 +30,7 @@ class Tracker {
       event,
       properties: props,
       timestamp: Date.now(),
-      eventId: uuidv4(),
+      eventId: createId(),
       sessionId: this.sessionId,
     };
 

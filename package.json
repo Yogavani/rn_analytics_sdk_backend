@@ -12,15 +12,12 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "axios": "^1.14.0",
-    "uuid": "^13.0.0"
+    "axios": "^1.14.0"
   },
   "peerDependencies": {
-    "@react-native-async-storage/async-storage": ">=1.0.0",
-    "react-native-get-random-values": ">=1.0.0"
+    "@react-native-async-storage/async-storage": ">=1.0.0"
   },
   "devDependencies": {
-    "@react-native-async-storage/async-storage": "^3.0.2",
-    "react-native-get-random-values": "^1.11.0"
+    "@react-native-async-storage/async-storage": "^3.0.2"
   }
 }
