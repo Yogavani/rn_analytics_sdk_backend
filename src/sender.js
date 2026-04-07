@@ -1,12 +1,16 @@
-const axios = require("axios");
+import axios from "axios";
 
 class Sender {
+  constructor(apiUrl) {
+    this.apiUrl = apiUrl;
+  }
+
   async send(events) {
     try {
       console.log("Sending events to server...");
 
       const response = await axios.post(
-        "http://localhost:3000/events",
+        this.apiUrl,
         { events }
       );
 
@@ -19,4 +23,4 @@ class Sender {
   }
 }
 
-module.exports = Sender;
+export default Sender;

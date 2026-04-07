@@ -1,7 +1,7 @@
 const Analytics = require("./src/index");
 
 // ✅ initialize first
-Analytics.init({ apiKey: "test" });
+// Analytics.init({ apiKey: "test" });
 
 
 Analytics.track("event_1");

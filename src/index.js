@@ -1,4 +1,4 @@
-const Tracker = require("./tracker");
+import Tracker from "./tracker";
 
 class Analytics {
   constructor() {
@@ -6,12 +6,18 @@ class Analytics {
   }
 
   init(config = {}) {
+    if (!config.apiUrl) {
+      console.warn("⚠️ Analytics: apiUrl is required in init()");
+    }
+
+    console.log("✅ Analytics initialized");
+
     this.tracker = new Tracker(config);
   }
 
   track(event, props = {}) {
     if (!this.tracker) {
-      console.warn("Analytics not initialized!");
+      console.warn("⚠️ Analytics not initialized!");
       return;
     }
 
@@ -19,4 +25,4 @@ class Analytics {
   }
 }
 
-module.exports = new Analytics();
+export default Analytics;
