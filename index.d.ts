@@ -1,6 +1,7 @@
 declare module "rn-analytics-sdk" {
   export interface AnalyticsConfig {
     apiUrl?: string;
+    apiKey?: string;
     flushInterval?: number;
   }
 

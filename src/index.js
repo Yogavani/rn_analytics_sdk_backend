@@ -7,13 +7,18 @@ class Analytics {
   }
 
   init(config = {}) {
-    if (!config.apiUrl) {
-      console.warn("⚠️ Analytics: apiUrl is required in init()");
+    const normalizedConfig = {
+      ...config,
+      apiUrl: config.apiUrl || config.apiKey,
+    };
+
+    if (!normalizedConfig.apiUrl) {
+      console.warn("⚠️ Analytics: apiUrl (or apiKey alias) is required in init()");
     }
 
     console.log("✅ Analytics initialized");
 
-    this.tracker = new Tracker(config);
+    this.tracker = new Tracker(normalizedConfig);
   }
 
   track(event, props = {}) {
