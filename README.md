@@ -19,7 +19,20 @@ A lightweight, customizable analytics SDK for React Native apps.
 
 ```bash
 npm install rn-analytics-sdk
+npm install @react-native-async-storage/async-storage react-native-get-random-values
 ```
+
+---
+
+## ✅ Required Peer Dependencies
+
+`rn-analytics-sdk` expects the host app to install:
+
+* `@react-native-async-storage/async-storage`
+* `react-native-get-random-values`
+
+These are peer dependencies to prevent duplicate native modules and autolinking conflicts.
+The SDK imports `react-native-get-random-values` internally to support `uuid` on React Native.
 
 ---
 
@@ -28,16 +41,18 @@ npm install rn-analytics-sdk
 ```js
 import Analytics from "rn-analytics-sdk";
 
+const analytics = new Analytics();
+
 // Initialize SDK
-Analytics.init({
-  apiKey: "your_api_key",
+analytics.init({
+  apiUrl: "https://your-api/events",
   flushInterval: 5000, // optional
 });
 
 // Track events
-Analytics.track("app_opened");
+analytics.track("app_opened");
 
-Analytics.track("button_clicked", {
+analytics.track("button_clicked", {
   buttonName: "Login",
 });
 ```
@@ -60,8 +75,10 @@ Analytics.track("button_clicked", {
 Initialize the SDK.
 
 ```js
-Analytics.init({
-  apiKey: "your_api_key",
+const analytics = new Analytics();
+
+analytics.init({
+  apiUrl: "https://your-api/events",
   flushInterval: 5000,
 });
 ```
@@ -73,7 +90,9 @@ Analytics.init({
 Track an event.
 
 ```js
-Analytics.track("purchase", {
+const analytics = new Analytics();
+
+analytics.track("purchase", {
   amount: 100,
   currency: "USD",
 });
@@ -85,7 +104,7 @@ Analytics.track("purchase", {
 
 | Option        | Type   | Description              |
 | ------------- | ------ | ------------------------ |
-| apiKey        | string | Your API key             |
+| apiUrl        | string | Your events endpoint URL |
 | flushInterval | number | Batch send interval (ms) |
 
 ---
@@ -93,9 +112,11 @@ Analytics.track("purchase", {
 ## 🛠️ Example
 
 ```js
-Analytics.init({ apiKey: "test" });
+const analytics = new Analytics();
 
-Analytics.track("screen_view", {
+analytics.init({ apiUrl: "https://example.com/events" });
+
+analytics.track("screen_view", {
   screen: "Home",
 });
 ```

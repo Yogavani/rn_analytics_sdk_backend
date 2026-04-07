@@ -8,12 +8,12 @@ class Sender {
   async send(events) {
     try {
       console.log("Sending events to server...");
+      console.log("API URL:", this.apiUrl);
 
       const response = await axios.post(
         this.apiUrl,
         { events }
       );
-
       console.log("Sent successfully:", response.status);
       return true;
     } catch (err) {
